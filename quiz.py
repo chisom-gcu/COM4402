@@ -23,7 +23,7 @@ options = [
 # Answer key (List of Correct Answers)
 answer_key = [2,3,3,2,2]
 
-# Initialisation
+# 
 
 score = 0
 
