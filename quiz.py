@@ -1,60 +1,104 @@
-# Holton College Digital Quiz System.
+# ----------------------------------------
+# Holton College Motherboard Quiz
+# ----------------------------------------
+
 print("Welcome to the Holton College Quiz!")
 print("Please answer with the number (1, 2, 3, or 4).\n")
 
-# Question Bank (List of Questions)
-question_bank = [
-    "What can a motherboard be known as?",
-    "Which component is known as the 'brain' and fits  into a socket  on the motherboard?",
-    "What does RAM stand for?",
-    "Which part of the motherboard keeps the date and time, when the power is off?",
-    "What do we call the 'roads' that data travels on across the motherboards?"
+# ----------------------------------------
+# DATA STORAGE: List of dictionaries
+# ----------------------------------------
+questions = [
+    {
+        "question": "What is the best way to describe a motherboard?",
+        "options": [
+            "The computer's brain",
+            "The central hub connecting all parts",
+            "A small portable storage stick",
+            "The screen you look at"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "Which component is known as the 'brain'?",
+        "options": [
+            "RAM",
+            "Hard Drive",
+            "CPU",
+            "Power Supply"
+        ],
+        "answer": 3
+    },
+    {
+        "question": "What does RAM stand for?",
+        "options": [
+            "Real Apple Music",
+            "Read All Messages",
+            "Random Access Memory",
+            "Run Another Memory"
+        ],
+        "answer": 3
+    },
+    {
+        "question": "Which part keeps the date and time when power is off?",
+        "options": [
+            "CPU",
+            "CMOS Battery",
+            "Cooling Fan",
+            "USB Port"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "What do we call the 'roads' that data travels on?",
+        "options": [
+            "Trains",
+            "Buses",
+            "Cables",
+            "Wi-Fi"
+        ],
+        "answer": 2
+    }
 ]
 
-# Options (List of lists)
-options = [
-    ["The computer's brain","The central hub connecting all the parts", "A small portable storage stick", "The screen you look at"],
-    ["RAM", "Hard Drive", "CPU", "Power Supply"],
-    ["Real Apple Music", "Read All Messages", "Random Access Memory", "Run Another Memory"],
-    ["CPU", "CMOS Battery", "Cooling Fan", "USB Port"],
-    ["Trains", "Buses", "Cables", "Wi-Fi"]
-]
-
-# Answer key (List of Correct Answers)
-answer_key = [2,3,3,2,2]
-
-# 
-
+# ----------------------------------------
+# INITIALISATION
+# ----------------------------------------
 score = 0
 
-# Quiz Execution
+# ----------------------------------------
+# QUIZ EXECUTION
+# ----------------------------------------
+for i, question in enumerate(questions, start=1):
+    print(f"Question {i}: {question['question']}")
 
-for index in range(len(question_bank)):
+    # Display the options
+    for num, option in enumerate(question["options"], start=1):
+        print(f"{num}. {option}")
 
-    print(f"Question {index +1}: {question_bank[index]}")
+    # Input with validation
+    valid_input = False
+    while not valid_input:
+        user_answer = input("Your answer: ")
+        try:
+            user_answer = int(user_answer)
+            if 1 <= user_answer <= 4:
+                valid_input = True
+            else:
+                print("Invalid input. Enter a number between 1 and 4.\n")
+        except ValueError:
+            print("Error: Input must be a number (1-4).\n")
 
-    #Display options for the current question
-    for option_number in range(4):
-        print(f"{option_number + 1}. {options[index][option_number]}")
-
-
-    # Get user input
-    user_answer = input ("Your answer: ")
-
-    #Validation and Scoring
-    if user_answer.isdigit():
-        user_answer = int(user_answer)
-
-        if user_answer == answer_key[index]:
-            print("Correct!\n")
-            score += 1
-        else:
-            print("Incorrect.\n")
+    # Check answer and update score
+    if user_answer == question["answer"]:
+        print("Correct!\n")
+        score += 1
     else:
-        print("Invalid input. Question marked incorrect.\n")
+        print("Incorrect.\n")
 
-# Result Display
+# ----------------------------------------
+# RESULTS DISPLAY
+# ----------------------------------------
 print("Quiz Complete!")
-print(f"You scored {score} out of {len(question_bank)} correct.")
+print(f"You scored {score} out of {len(questions)} correct.")
 print("Thank you for playing!")
-
