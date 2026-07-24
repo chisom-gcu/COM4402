@@ -94,7 +94,8 @@ for i, question in enumerate(questions, start=1):
         print("Correct!\n")
         score += 1
     else:
-        print("Incorrect.\n")
+        correct_option = question["options"][question["answer"] - 1]
+        print(f"Incorrect. The correct answer was {question['answer']}. {correct_option}\n")
 
 # ----------------------------------------
 # RESULTS DISPLAY
