@@ -99,6 +99,9 @@ for i, question in enumerate(questions, start=1):
 # ----------------------------------------
 # RESULTS DISPLAY
 # ----------------------------------------
+percentage = (score / len(questions)) * 100
+
 print("Quiz Complete!")
 print(f"You scored {score} out of {len(questions)} correct.")
+print(f"Percentage: {percentage:.0f}%")
 print("Thank you for playing!")
