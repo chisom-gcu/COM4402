@@ -2,7 +2,10 @@
 # Holton College Motherboard Quiz
 # ----------------------------------------
 
-print("Welcome to the Holton College Quiz!")
+print("=" * 40)
+print(" Welcome to the Holton College Quiz! ")
+print("=" * 40)
+print("Topic: Motherboards")
 print("Please answer with the number (1, 2, 3, or 4).\n")
 
 # ----------------------------------------
